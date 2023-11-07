@@ -20,6 +20,9 @@ namespace API_Backend.Controllers
 
         // getting all transactions list 
 
+         // GetAllTransactions method is used to get all Transactions from the Database and returns list of transactions as a response
+
+        // returns empty list [] if there is no record in the db 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetAllTransactions()
         {
@@ -30,6 +33,8 @@ namespace API_Backend.Controllers
 
         // get transaction by id
 
+        // GetTransactionById method is used to get a single Transaction from the Database according to recived id 
+        // If transaction does not exist then method returns NotFound 404
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransactionById(int id)
         {
@@ -45,6 +50,7 @@ namespace API_Backend.Controllers
 
         // create transaction
 
+        // Post CreateTransaction method is used to create new transaction in Db
         [HttpPost]
         public async Task<ActionResult<Transaction>> CreateTransaction(Transaction trn)
         {
@@ -133,6 +139,7 @@ namespace API_Backend.Controllers
 
         }
 
+        // Method to check whether Transaction exist or not, returns boolean
         private bool TransactionExist(int id)
         {
             return _dbContext.Transactions.Any(e => e.ID == id);

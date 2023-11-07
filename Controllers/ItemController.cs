@@ -19,7 +19,8 @@ namespace API_Backend.Controllers
             _dbContext = dbContext;
         }
 
-        // GET: api/items
+        // GET: api/items   
+        // GetItems method is used to get all Items from the Database and returns list of items as a response
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
@@ -28,6 +29,8 @@ namespace API_Backend.Controllers
         }
 
         // GET: api/item/{id}
+        // GetItem method is used to get a single Item from the Database according to recived id 
+        // If item does not exist then method returns NotFound 404
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
@@ -42,6 +45,8 @@ namespace API_Backend.Controllers
         }
 
         // POST: api/items
+
+        // Post CreateItem method is used to create new Item in Db
         [HttpPost]
         public async Task<ActionResult<Item>> Createitem(Item item)
         {
